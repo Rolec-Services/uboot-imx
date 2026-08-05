@@ -442,10 +442,12 @@ int dram_init(void)
 {
 	phys_size_t sdram_size;
 	int ret;
-
+#if 0
 	ret = board_phys_sdram_size(&sdram_size);
 	if (ret)
 		return ret;
+#endif
+	sdram_size = PHYS_SDRAM_SIZE;
 
 	/* rom_pointer[1] contains the size of TEE occupies */
 	if (!IS_ENABLED(CONFIG_XPL_BUILD) && rom_pointer[1])
@@ -458,6 +460,7 @@ int dram_init(void)
 
 int dram_init_banksize(void)
 {
+#if 0
 	int bank = 0;
 	int ret;
 	phys_size_t sdram_size;
@@ -504,12 +507,19 @@ int dram_init_banksize(void)
 		gd->bd->bi_dram[bank].start = 0x100000000UL;
 		gd->bd->bi_dram[bank].size = sdram_b2_size;
 	}
+#endif
+	gd->bd->bi_dram[0].start = 0x80000000;
+    gd->bd->bi_dram[0].size = 0x1E000000; /* Set bank size strictly to 480MB */
+    
+    /* Hard-clamp the top tracking bounds to remove the 'effective 2 GiB' trigger */
+    gd->ram_top = 0x80000000 + 0x1E000000; 
 
 	return 0;
 }
 
 phys_size_t get_effective_memsize(void)
 {
+	#if 0
 	int ret;
 	phys_size_t sdram_size;
 	phys_size_t sdram_b1_size;
@@ -535,6 +545,8 @@ phys_size_t get_effective_memsize(void)
 	} else {
 		return PHYS_SDRAM_SIZE;
 	}
+	#endif
+	return 0x1E000000; /* 480 MB */
 }
 
 void imx_get_mac_from_fuse(int dev_id, unsigned char *mac)

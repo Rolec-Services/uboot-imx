@@ -683,6 +683,7 @@ int dram_init_banksize(void)
 
 phys_size_t get_effective_memsize(void)
 {
+	#if 0
 	int ret;
 	phys_size_t sdram_size;
 	phys_size_t sdram_b1_size;
@@ -709,6 +710,8 @@ phys_size_t get_effective_memsize(void)
 	} else {
 		return PHYS_SDRAM_SIZE;
 	}
+	#endif
+	return 0x1E000000;
 }
 
 void imx_get_mac_from_fuse(int dev_id, unsigned char *mac)

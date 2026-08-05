@@ -26,7 +26,8 @@
 
 #define CFG_SYS_SDRAM_BASE           0x80000000
 #define PHYS_SDRAM                      0x80000000
-#define PHYS_SDRAM_SIZE			0x80000000 /* 2GB DDR */
+//#define PHYS_SDRAM_SIZE			0x80000000 /* 2GB DDR */
+#define PHYS_SDRAM_SIZE			0x20000000 /* 512MB, 32MB reserved for ECC */
 
 /* Using ULP WDOG for reset */
 #define WDOG_BASE_ADDR          WDG3_BASE_ADDR
