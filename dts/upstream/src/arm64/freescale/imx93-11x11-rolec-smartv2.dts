@@ -1,0 +1,49 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright 2026 Rolec
+ */
+
+/dts-v1/;
+
+/include/ "imx93-11x11-evk.dts"
+
+/ {
+	model = "Rolec i.MX93 11X11 SmartV2 board";
+	compatible = "rolec,imx93-rolec-smartv2", "fsl,imx93-11x11-evk", "fsl,imx93";
+
+	reg_usb1_vbus: regulator-usb1-vbus {
+		compatible = "regulator-fixed";
+		regulator-name = "usb1_vbus";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		gpio = <&pcal6524 4 GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+		regulator-always-on;
+	};
+};
+
+&usbphynop2 {
+	status = "okay";
+};
+
+&usbphynop1 {
+	fsl,vbus-detect-ext;
+	status = "okay";
+};
+
+&usbotg1 {
+	dr_mode = "otg";
+	vbus-supply = <&reg_usb1_vbus>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_usbotg1_ext>;
+	interrupt-parent = <&gpio2>;
+	interrupts = <21 IRQ_TYPE_EDGE_FALLING>;
+	over-current-active-low;
+	status = "okay";
+};
+
+&usbotg2 {
+	dr_mode = "host";
+	disable-over-current;
+	status = "okay";
+};
