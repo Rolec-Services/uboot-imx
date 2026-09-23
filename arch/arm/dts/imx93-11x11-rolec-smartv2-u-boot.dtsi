@@ -1,0 +1,22 @@
+// SPDX-License-Identifier: GPL-2.0+
+/*
+ * U-Boot-only overlays for Rolec SmartV2.
+ *
+ * Keep this aligned with EVK until board-specific U-Boot DT changes
+ * are intentionally introduced and validated.
+ */
+
+#include "imx93-11x11-evk-u-boot.dtsi"
+
+/* Rolec SmartV2 variant does not populate EVK TCPC/ADP5585 parts. */
+&usbotg1 {
+	/delete-property/ extcon;
+};
+
+&usbotg2 {
+	/delete-property/ extcon;
+};
+
+&{/rm67199_panel} {
+	/delete-property/ reset-gpio;
+};

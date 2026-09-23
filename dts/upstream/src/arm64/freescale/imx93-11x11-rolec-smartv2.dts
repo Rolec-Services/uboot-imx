@@ -1,10 +1,5 @@
 // SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 /*
- * Copyright 2026 Rolec
- */
-
-// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-/*
  * Copyright 2022 NXP
  */
 
@@ -15,6 +10,7 @@
 #include <dt-bindings/gpio/gpio.h>
 #include "imx93.dtsi"
 
+// AM
 //&ele_fw2 {
 //	memory-region = <&ele_reserved>;
 //};
@@ -411,6 +407,7 @@
 	status = "okay";
 };
 
+// AM
 //&dphy {
 //	status = "okay";
 //};
@@ -499,11 +496,13 @@
 	status = "okay";
 };
 
+// AM
 //&lcdif {
 //	status = "okay";
 //	assigned-clock-rates = <445333333>, <148444444>, <400000000>, <133333333>;
 //};
 
+// AM
 //&lpm {
 //	soc-supply = <&buck1>;
 //	status = "okay";
@@ -741,7 +740,7 @@
 			};
 		};
 	};
-/*
+	/* AM
 	adp5585: io-expander@34 {
 		compatible = "adi,adp5585-00", "adi,adp5585";
 		reg = <0x34>;
@@ -751,7 +750,7 @@
 		gpio-reserved-ranges = <5 1>;
 		#pwm-cells = <3>;
 	};
-*/
+	*/
 };
 
 &lpi2c3 {
@@ -823,7 +822,7 @@
 	};
 */
 
-/* AM
+	/* AM
 	ptn5110: tcpc@50 {
 		compatible = "nxp,ptn5110", "tcpci";
 		reg = <0x50>;
@@ -856,9 +855,9 @@
 			};
 		};
 	};
-*/
+	*/
 
-/* AM
+	/* AM
 	ptn5110_2: tcpc@51 {
 		compatible = "nxp,ptn5110", "tcpci";
 		reg = <0x51>;
@@ -891,7 +890,7 @@
 			};
 		};
 	};
-*/
+	*/
 
 	pcf2131: rtc@53 {
 		compatible = "nxp,pcf2131";
@@ -1782,6 +1781,7 @@
 	};
 };
 
+//AM
 //&epxp {
 //	status = "okay";
 //};
@@ -1823,6 +1823,7 @@
 };
 */
 
+//AM
 //&dphy_rx {
 //	status = "okay";
 //};
