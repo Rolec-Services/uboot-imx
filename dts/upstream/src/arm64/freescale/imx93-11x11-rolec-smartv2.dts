@@ -1052,6 +1052,12 @@
 
 &usbotg1 {
     dr_mode = "peripheral";
+	hnp-disable;
+	srp-disable;
+	adp-disable;
+	maximum-speed = "high-speed";
+	samsung,picophy-pre-emp-curr-control = <3>;
+	samsung,picophy-dc-vol-level-adjust = <7>;
     vbus-supply = <&reg_usb1_vbus>;
 
     pinctrl-names = "default";
